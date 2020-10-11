@@ -32,79 +32,79 @@ import javax.inject.Inject;
 @QuarkusTest
 public class ApiDocumentationTest {
 
-  @ExtendWith
-  public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
+//   @ExtendWith
+//   public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
 
-  @Inject
-  private ObjectMapper objectMapper;
+//   @Inject
+//   private ObjectMapper objectMapper;
 
-  @Inject
-  private WebApplicationContext context;
+//   @Inject
+//   private WebApplicationContext context;
 
-  private MockMvc mockMvc;
+//   private MockMvc mockMvc;
 
-  @Before
-  public void setUp() {
-    this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-        .apply(documentationConfiguration(this.restDocumentation)).build();
-  }
+//   @Before
+//   public void setUp() {
+//     this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
+//         .apply(documentationConfiguration(this.restDocumentation)).build();
+//   }
 
-  @Test
-  public void greetingV1() throws Exception {
-    this.mockMvc
-        .perform(
-            get("/v1/greeting")
-                .header("Origin", "*")
-        )
-        .andDo(print()).andExpect(status().isOk())
-        .andExpect(content().string(containsString("Hello, World!")))
-        .andDo(
-            document("greeting-v1",
-                responseFields(
-                    fieldWithPath("id").description("The number of greetings that have been requested.").type(JsonFieldType.NUMBER),
-                    fieldWithPath("content").description("The content of the greeting.").type(JsonFieldType.STRING)
-                )
-            )
-        );
-  }
+//   @Test
+//   public void greetingV1() throws Exception {
+//     this.mockMvc
+//         .perform(
+//             get("/v1/greeting")
+//                 .header("Origin", "*")
+//         )
+//         .andDo(print()).andExpect(status().isOk())
+//         .andExpect(content().string(containsString("Hello, World!")))
+//         .andDo(
+//             document("greeting-v1",
+//                 responseFields(
+//                     fieldWithPath("id").description("The number of greetings that have been requested.").type(JsonFieldType.NUMBER),
+//                     fieldWithPath("content").description("The content of the greeting.").type(JsonFieldType.STRING)
+//                 )
+//             )
+//         );
+//   }
 
-  @Test
-  public void hostinfoV1() throws Exception {
-    this.mockMvc
-        .perform(
-            get("/v1/hostinfo")
-                .header("Origin", "*")
-        )
-        .andDo(print()).andExpect(status().isOk())
-        .andExpect(content().string(anything()))
-        .andDo(
-            document("hostname-v1",
-                responseFields(
-                    fieldWithPath("hostname").description("The instance's hostname.").type(JsonFieldType.STRING)
-                )
-            )
-        );
-  }
+//   @Test
+//   public void hostinfoV1() throws Exception {
+//     this.mockMvc
+//         .perform(
+//             get("/v1/hostinfo")
+//                 .header("Origin", "*")
+//         )
+//         .andDo(print()).andExpect(status().isOk())
+//         .andExpect(content().string(anything()))
+//         .andDo(
+//             document("hostname-v1",
+//                 responseFields(
+//                     fieldWithPath("hostname").description("The instance's hostname.").type(JsonFieldType.STRING)
+//                 )
+//             )
+//         );
+//   }
 
-  @Test
-  public void envInfoV1() throws Exception {
-    this.mockMvc
-        .perform(
-            get("/v1/envinfo")
-                .param("filter", "*")
-                .header("Origin", "*")
-        )
-        .andDo(print()).andExpect(status().isOk())
-        .andExpect(content().string(anything()))
-        .andDo(
-            document("envinfo-v1",
-                requestParameters(
-                    parameterWithName("filter")
-                        .description("A filter for the environment variables. Use * for all variables.")
-                        .optional()
-                )
-            )
-        );
-  }
+//   @Test
+//   public void envInfoV1() throws Exception {
+//     this.mockMvc
+//         .perform(
+//             get("/v1/envinfo")
+//                 .param("filter", "*")
+//                 .header("Origin", "*")
+//         )
+//         .andDo(print()).andExpect(status().isOk())
+//         .andExpect(content().string(anything()))
+//         .andDo(
+//             document("envinfo-v1",
+//                 requestParameters(
+//                     parameterWithName("filter")
+//                         .description("A filter for the environment variables. Use * for all variables.")
+//                         .optional()
+//                 )
+//             )
+//         );
+//   }
 
 }
