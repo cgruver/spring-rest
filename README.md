@@ -42,3 +42,24 @@ This is a simple app using Spring Boot as part of [Red Hat OpenShift Application
 	- [OWASP Dependency Check docs](https://www.owasp.org/index.php/OWASP_Dependency_Check)
 	- [Continuous security and OWASP Dependency Check blog](https://blog.lanyonm.org/articles/2015/12/22/continuous-security-owasp-java-vulnerability-check.html)
 	
+# Quarkus - Super Sonic Java
+
+This project also contains a branch that includes the same functionality, ported to Quarkus.  See [Quarkus.io](https://quarkus.io)
+
+## Usage to build and run with Quarkus
+
+1. `git clone`
+1. `git checkout -b quarkus`
+1. `./mvn compile quarkus:dev`
+
+## Test Endpoints
+
+1. `curl -v http://localhost:8080/v1/greeting`
+
+2. `curl -v http://localhost:8080/v1/hostinfo`
+
+3. `curl -v http://localhost:8080/v1/envinfo`
+
+## Build Native executable
+
+[quarkus.io/guides/building-native-image](https://quarkus.io/guides/building-native-image)
