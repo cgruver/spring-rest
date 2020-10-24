@@ -56,9 +56,8 @@ node('maven') {
 
     sh """
       rm -rf oc-build && mkdir -p oc-build/deployments
-      for t in \$(echo "jar;war;ear" | tr ";" "\\n"); do
-        cp -rfv ./target/*.\$t oc-build/deployments/ 2> /dev/null || echo "No \$t files"
-      done
+      cp ./target/lib/* ./oc-build/deployments/lib/
+      cp ./target/*-runner.jar ./oc-build/deployments/
       ${env.OC_CMD} start-build ${env.APP_NAME} --from-dir=oc-build --wait=true --follow=true || exit 1
     """
   }

@@ -5,3 +5,5 @@ target
 .settings/
 .idea
 *.iml
+.factorypath
+.DS_Store
