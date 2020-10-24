@@ -4,11 +4,13 @@
 
 This is a simple app using [Quarkus](https://quarkus.io).  
 
-## Usage to build and run with Quarkus
+## Usage to build and run with Quarkus in live dev mode
 
 1. `git clone`
 1. `git checkout -b quarkus`
-1. `./mvn compile quarkus:dev`
+1. `mvn compile quarkus:dev`
+
+Now make changes to the code, and see the results live.
 
 ## Test Endpoints
 
